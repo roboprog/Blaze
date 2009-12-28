@@ -2,3 +2,5 @@
 #
 # ignore "build" directory created by NetBeans:
 build/*
+# ignore "dist" directory created by NetBeans:
+dist/*
