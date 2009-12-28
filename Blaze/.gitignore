@@ -1,0 +1,4 @@
+# files in "Blaze" subdir to be ignored
+#
+# ignore "build" directory created by NetBeans:
+build/*

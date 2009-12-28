@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="51">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>memwrap.h</itemPath>
+      <itemPath>parse_state.h</itemPath>
+      <itemPath>parser.c</itemPath>
+      <itemPath>parser.h</itemPath>
+      <itemPath>symtab.c</itemPath>
+      <itemPath>symtab.h</itemPath>
+      <itemPath>token_type.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <itemPath>main.c</itemPath>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="main.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="memwrap.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="parse_state.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="parser.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="parser.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="symtab.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="symtab.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="token_type.h">
+        <itemTool>3</itemTool>
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+          <developmentMode>5</developmentMode>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <developmentMode>5</developmentMode>
+        </ccCompilerTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="main.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="memwrap.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="parse_state.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="parser.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="parser.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="symtab.c">
+        <itemTool>0</itemTool>
+      </item>
+      <item path="symtab.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="token_type.h">
+        <itemTool>3</itemTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

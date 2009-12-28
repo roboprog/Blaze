@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Intro to new scripting language, TBD</title>
+</head>
+<body>
+<h1>Intro to new scripting language, TBD</h1>
+
+<p>Want a simple line oriented language, with some OOP / functional support<p>
+
+<hr/>
+<code><pre>
+run
+	rt:puts( "Hello, world")
+end
+</pre></code>
+
+
+<hr/>
+<code><pre>
+# all definitions in this file are in namespace "com.acme.test"
+module com.acme.test
+
+const
+	PI = 3.14
+end
+
+var
+	total : float
+end
+
+# accumulate the given numeric
+func accum
+	n  # the input numeric (type inferred)
+do
+	total = total + n
+end
+
+# initialize module:
+run
+	total = 0.0
+	accum( PI)
+	rt.out.puts( total)
+end
+</pre></code>
+
+
+</body>
+</html>

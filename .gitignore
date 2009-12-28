@@ -1,0 +1,4 @@
+# files in "blaze" project to be ignored
+#
+# ignore "build" directory created by NetBeans:
+Blaze/build/* !.gitignore
