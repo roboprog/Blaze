@@ -1,0 +1,32 @@
+Welcome to Blaze.
+
+Blaze is intended to be used as either a scripting language,
+or as a semi-compiled (tokenized) language supporting packaged binaries.
+
+Well, what kind of language?
+----------------------------
+Originally, one that was to steal some of the best (says who?) features
+of Perl and (Turbo) Pascal, as different as those are.
+Don't be surprised to see elements of Ruby or C# slip in, either.
+
+That said, there is no language definition yet.
+To get a feel for things that the author thinks are important, please see:
+http://roboprogs.com/devel/2009.07.html
+
+TODO:  add details at roboprogs.com regarding Blaze...
+
+Currently, this software does *nothing* useful.  You were warned.
+Check again in a few months.
+
+Next steps:  develop a run-time library for the language,
+and re-implement the parser in terms of the new run-time.
+
+License
+-------
+This software is released under the LGPL (lesser general public license)
+(http://www.gnu.org/licenses/lgpl.txt)
+
+
+
+- Rob Anderson ("roboprog")
+
