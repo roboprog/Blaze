@@ -1,0 +1,8 @@
+This directory contains the native (C) implementations of the
+Blaze runtime library.
+
+Of particular interest:
+* exception handling
+* stack frame definition
+* object base type
+* string type and methods
