@@ -16,20 +16,24 @@ CC=gcc
 CCC=g++
 CXX=g++
 FC=
+AS=
 
 # Macros
-PLATFORM=GNU-Linux-x86
+CND_PLATFORM=GNU-Linux-x86
+CND_CONF=Debug
+CND_DISTDIR=dist
 
 # Include project Makefile
 include Makefile
 
 # Object Directory
-OBJECTDIR=build/Debug/${PLATFORM}
+OBJECTDIR=build/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/symtab.o \
 	${OBJECTDIR}/parser.o \
+	${OBJECTDIR}/rt/bz_str.o \
 	${OBJECTDIR}/main.o
 
 # C Compiler Flags
@@ -42,28 +46,36 @@ CXXFLAGS=
 # Fortran Compiler Flags
 FFLAGS=
 
+# Assembler Flags
+ASFLAGS=
+
 # Link Libraries and Options
 LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/${PLATFORM}/blaze
+	${MAKE}  -f nbproject/Makefile-Debug.mk dist/Debug/GNU-Linux-x86/blaze
 
-dist/Debug/${PLATFORM}/blaze: ${OBJECTFILES}
-	${MKDIR} -p dist/Debug/${PLATFORM}
-	${LINK.c} -o dist/Debug/${PLATFORM}/blaze ${OBJECTFILES} ${LDLIBSOPTIONS} 
+dist/Debug/GNU-Linux-x86/blaze: ${OBJECTFILES}
+	${MKDIR} -p dist/Debug/GNU-Linux-x86
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/blaze ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/symtab.o: symtab.c 
+${OBJECTDIR}/symtab.o: nbproject/Makefile-${CND_CONF}.mk symtab.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/symtab.o symtab.c
 
-${OBJECTDIR}/parser.o: parser.c 
+${OBJECTDIR}/parser.o: nbproject/Makefile-${CND_CONF}.mk parser.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/parser.o parser.c
 
-${OBJECTDIR}/main.o: main.c 
+${OBJECTDIR}/rt/bz_str.o: nbproject/Makefile-${CND_CONF}.mk rt/bz_str.c 
+	${MKDIR} -p ${OBJECTDIR}/rt
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/rt/bz_str.o rt/bz_str.c
+
+${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
@@ -74,7 +86,7 @@ ${OBJECTDIR}/main.o: main.c
 # Clean Targets
 .clean-conf:
 	${RM} -r build/Debug
-	${RM} dist/Debug/${PLATFORM}/blaze
+	${RM} dist/Debug/GNU-Linux-x86/blaze
 
 # Subprojects
 .clean-subprojects:

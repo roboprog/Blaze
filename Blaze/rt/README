@@ -6,3 +6,10 @@ Of particular interest:
 * stack frame definition
 * object base type
 * string type and methods
+
+
+Some abbreviations / conventions for type and function names:
+* bz: blaze
+* bzc (bzc_): a blaze internal meant to be used by / from C code
+* m (_m_): mutable (as opposed to immutable, which is frequently assumed)
+* 

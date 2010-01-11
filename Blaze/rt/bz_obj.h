@@ -13,6 +13,8 @@
 extern "C" {
 #endif
 
+#include <setjmp.h>
+    
     /** provide a 64 bit "size_t" surrogate for the project */
     typedef unsigned long long  t_bz_size;
 
@@ -41,10 +43,27 @@ extern "C" {
         {
         t_bz_size       size;           ///< total size of object's inline data
         int             class_selector; ///< index into class def table
+        int             ref_cnt;        ///< reference count
+        int             is_mutable;     ///< 0 for an immmutable instance
 
         // append class specific data following...
         }
         t_bz_obj;
+
+#if 0
+    /** hold a pool of bytes for "folded" objects / primitives */
+    typedef struct t_bz_arena
+        {
+        char *          buf;            ///< the buffer for every object in pool
+        t_bz_size       size;           ///< total size of buffer
+        struct t_bz_arena_entry_idx *
+                        entry_list;     ///< index into entries
+        struct t_bz_arena_free *
+                        free_list;      ///< unused space within arena, in not null
+        }
+        t_bz_arena;
+#endif  // 0 - dead code
+
 
 #ifdef	__cplusplus
 }

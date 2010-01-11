@@ -29,8 +29,40 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <setjmp.h>
 
+
+#include "rt/bz_str.h"
 #include "parser.h"
+
+/**
+ * Quick and dirty testing bogons
+ */
+static
+void                    dev_test_bogons( void)
+    {
+    jmp_buf             on_err;
+    t_bz_str            str;
+
+    if ( setjmp( on_err) )
+        {
+        // TODO:  *handling* of error
+        fprintf( stderr, "GAME OVER at %s:%d", __FILE__, __LINE__);
+        exit( 1);  // === abort ===
+        }  // problem?
+
+    bzc_str_c2bz( &on_err, &str, "Hello");
+    puts( bzc_str_data( &on_err, &str) );
+    bz_str_done( &on_err, &str);
+
+    bzc_str_c2bz( &on_err, &str, "I don't know why you say goodbye");
+    puts( bzc_str_data( &on_err, &str) );
+    bz_str_done( &on_err, &str);
+
+    bzc_str_c2bz( &on_err, &str, "Hello");
+    puts( bzc_str_data( &on_err, &str) );
+    bz_str_done( &on_err, &str);
+    }  // _________________________________________________________
 
 /**
  * Interpret or compile the program(s) indicated.
@@ -42,6 +74,10 @@ int                     main
     )
     {
 
+    bzc_str_rt_init();
+
+    dev_test_bogons();
+    
     // TODO:  arg parsing
     parse_file( argv[ 1 ]);
     puts( "TODO: run");
