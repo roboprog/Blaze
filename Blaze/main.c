@@ -32,6 +32,7 @@
 #include <setjmp.h>
 
 
+#include "rt/bz_io.h"
 #include "rt/bz_str.h"
 #include "parser.h"
 
@@ -42,6 +43,9 @@ static
 void                    dev_test_bogons( void)
     {
     jmp_buf             on_err;
+    t_bz_size           cr_sz;
+    t_call_ret_frame *  call_ret;
+    char *              param_ptr;
     t_bz_str            str;
 
     if ( setjmp( on_err) )
@@ -51,16 +55,36 @@ void                    dev_test_bogons( void)
         exit( 1);  // === abort ===
         }  // problem?
 
+    // fake a "frame", as if called from actual "blaze" program
+    cr_sz = sizeof( t_call_ret_frame) + sizeof( t_bz_str *);
+    call_ret = malloc( (size_t) cr_sz);
+    if ( call_ret == NULL)
+        {
+        fprintf( stderr, "ERROR: failed malloc at %s:%d", __FILE__, __LINE__);
+        longjmp( on_err, 1);  // === abort ===
+        }  // allocation failed?
+
+    call_ret->size = cr_sz;
+    call_ret->jump = &on_err;
+    call_ret->parent = NULL;
+    call_ret->num_params = 1;
+    param_ptr = ( (char *) call_ret) + sizeof( t_call_ret_frame);  // TODO: macro for this
+    *( (t_bz_str * *) param_ptr) = &str;
+
+    // TODO:  make a function to create frames, create one for *each* call
+    // TODO:  remove pointers from frames, use offsets
+    //      (so that frames can be suballocated from a relocatable buffer)
+
     bzc_str_c2bz( &on_err, &str, "Hello");
-    puts( bzc_str_data( &on_err, &str) );
+    bz_puts( call_ret);
     bz_str_done( &on_err, &str);
 
     bzc_str_c2bz( &on_err, &str, "I don't know why you say goodbye");
-    puts( bzc_str_data( &on_err, &str) );
+    bz_puts( call_ret);
     bz_str_done( &on_err, &str);
 
     bzc_str_c2bz( &on_err, &str, "Hello");
-    puts( bzc_str_data( &on_err, &str) );
+    bz_puts( call_ret);
     bz_str_done( &on_err, &str);
     }  // _________________________________________________________
 

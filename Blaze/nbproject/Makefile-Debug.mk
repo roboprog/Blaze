@@ -34,6 +34,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/symtab.o \
 	${OBJECTDIR}/parser.o \
 	${OBJECTDIR}/rt/bz_str.o \
+	${OBJECTDIR}/rt/bz_io.o \
 	${OBJECTDIR}/main.o
 
 # C Compiler Flags
@@ -74,6 +75,11 @@ ${OBJECTDIR}/rt/bz_str.o: nbproject/Makefile-${CND_CONF}.mk rt/bz_str.c
 	${MKDIR} -p ${OBJECTDIR}/rt
 	${RM} $@.d
 	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/rt/bz_str.o rt/bz_str.c
+
+${OBJECTDIR}/rt/bz_io.o: nbproject/Makefile-${CND_CONF}.mk rt/bz_io.c 
+	${MKDIR} -p ${OBJECTDIR}/rt
+	${RM} $@.d
+	$(COMPILE.c) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/rt/bz_io.o rt/bz_io.c
 
 ${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.c 
 	${MKDIR} -p ${OBJECTDIR}
